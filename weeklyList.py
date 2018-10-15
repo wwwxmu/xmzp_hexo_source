@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 # 生成每周列表
-
+import os
 import time
 import datetime
 import pymongo
@@ -19,7 +19,7 @@ res = post.find({"created_date":{"$gt":str(lastweek)}}).sort("start_date",pymong
 
 title = "一周招聘信息汇总 | "+str(lastweek)+"--"+str(today) + "(" + str(num) + "则)"
 
-with open('./source/_posts/'+title+".md", 'w') as fo:
+with open(os.getcwd()+'/source/_posts/'+title+".md", 'w') as fo:
     fo.write("---\n")
     fo.write("title: "+title+"\n")
     fo.write("date: "+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+'\n')

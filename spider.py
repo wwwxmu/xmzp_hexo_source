@@ -99,7 +99,7 @@ class spider(object):
         for index, b in enumerate(body):
             content = content + b.xpath('string(.)')
         info['content'] = content[:-6]
-        print(info)
+        # print(info)
         return info
 
 
