@@ -7,8 +7,10 @@ db = conn.xmzp
 post = db.jobs
 date = time.strftime("%Y-%m-%d", time.localtime())
 res = post.find({"created_date":date}).sort("start_date",pymongo.ASCENDING)
+num = 0
 for x in res:
-    with open('./source/_posts/'+x['title']+".md", 'a') as fo:
+    num += 1
+    with open('./source/_posts/'+x['title']+".md", 'w') as fo:
         fo.write("---\n")
         fo.write("title: "+x['title']+'\n')
         fo.write("date: "+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+'\n')
@@ -17,7 +19,7 @@ for x in res:
         fo.write("发布时间："+ x['start_date']+'   \U0001F31F   招聘人数：'+x['people']+'   \U0001F308   截止时间：'+x['dead_time']+'\n')
         fo.write("<!-- more -->\n")
         fo.write(x['content'])
+        fo.write("![](https://cdn.weiweiblog.cn/20181015111808.png)")
         time.sleep(1)
-
-
+print("添加"+str(num)+"篇文章")
 
