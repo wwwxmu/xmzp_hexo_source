@@ -39,6 +39,7 @@ env:
 
 notifications:
     email:
-        - 121451070@qq.com
-    on_success: change
-    on_failure: always
+        recipients:
+            - 121451070@qq.com
+        on_success: change
+        on_failure: always
