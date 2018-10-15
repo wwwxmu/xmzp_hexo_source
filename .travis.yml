@@ -1,0 +1,38 @@
+language: node_js
+node_js: stable
+
+branches:
+    only:
+        - hexo
+
+install:
+    - npm install
+      #- npm rebuild node-sass --force
+
+before_install:
+    - export TZ='Asia/Shanghai'
+    - git config --global user.name "wwwxmu"
+    - git config --global user.email "www@stu.xmu.edu.cn"
+    - npm uninstall hexo-cli -g
+    - npm install hexo-cli -g
+
+script:
+    - hexo clean
+    - hexo generate
+
+after_script:
+    - git clone https://${GH_REF} .deploy_git
+    - cd .deploy_git
+    - git checkout master
+    - cd ../
+    - mv .deploy_git/.git/ ./public/
+    - cd ./public
+    - git add .
+    - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"
+    - git push --force --quiet "https://${GITHUB_TOKEN}@${GH_REF}" master:master
+    - git push --force --quiet "https://www_xmu:${CODING_TOKEN}@${CO_REF}" master:master
+
+env:
+    global:
+        - GH_REF: github.com/wwwxmu/wwwxmu.github.io.git
+        - CO_REF: git.coding.net/www_xmu/www_xmu.git
