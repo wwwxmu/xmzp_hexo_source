@@ -36,3 +36,7 @@ env:
     global:
         - GH_REF: github.com/wwwxmu/wwwxmu.github.io.git
         - CO_REF: git.coding.net/www_xmu/www_xmu.git
+
+notifications:
+    email:
+        - 121451070@qq.com
