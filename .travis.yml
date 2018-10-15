@@ -41,5 +41,6 @@ notifications:
     email:
         recipients:
             - 121451070@qq.com
+            - www@stu.xmu.edu.cn
         on_success: change
         on_failure: always
