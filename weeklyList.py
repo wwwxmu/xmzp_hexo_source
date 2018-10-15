@@ -17,7 +17,7 @@ lastweek = today - sevenday
 num = post.find({"created_date":{"$gt":str(lastweek)}}).count()
 res = post.find({"created_date":{"$gt":str(lastweek)}}).sort("start_date",pymongo.ASCENDING)
 
-title = "一周招聘信息汇总 | "+str(today)+"--"+str(lastweek) + "(" + str(num) + "则)"
+title = "一周招聘信息汇总 | "+str(lastweek)+"--"+str(today) + "(" + str(num) + "则)"
 
 with open('./source/_posts/'+title+".md", 'w') as fo:
     fo.write("---\n")
@@ -25,11 +25,11 @@ with open('./source/_posts/'+title+".md", 'w') as fo:
     fo.write("date: "+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+'\n')
     fo.write("tags: 一周招聘信息汇总\n")
     fo.write("---\n")
-    fo.write("本周信息条数："+ str(num) +'   \U0002764F \n')
-    fo.write("<!-- more -->\n")
-    fo.write("| 标题 | 截止时间 | 招聘人数 | Url |\n| :-: | :-: | :-: | :-: |\n")
+    fo.write("本周信息条数："+ str(num) +'   \U00002618 \n')
+    fo.write("<!-- more -->\n\n")
+    fo.write("| 截止时间 | 招聘人数 | 标题 | Url |\n| :-: | :-: | :-: | :-: |\n")
     for x in res:
-        fo.write("|"+x['title']+"|"+x['dead_time']+"|"+x['people']+"|https://xmzp.weiweiblog.cn/"+"".join(x['created_date'].split('-'))+"/"+x['title']+"/ |\n")
-    fo.write("![](https://cdn.weiweiblog.cn/20181015111808.png)")
+        fo.write("| "+x['dead_time']+" | "+x['people']+" | "+x['title']+"|https://xmzp.weiweiblog.cn/"+"".join(x['created_date'].split('-'))+"/"+x['title']+"/ |\n")
+    fo.write("![](https://cdn.weiweiblog.cn/20181015134257.png)")
 
-python("一周招聘信息汇总编写完毕")
+print("一周招聘信息汇总编写完毕")
