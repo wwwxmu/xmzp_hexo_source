@@ -30,6 +30,6 @@ with open('./source/_posts/'+title+".md", 'w') as fo:
     fo.write("| 截止时间 | 招聘人数 | 标题 | Url |\n| :-: | :-: | :-: | :-: |\n")
     for x in res:
         fo.write("| "+x['dead_time']+" | "+x['people']+" | "+x['title']+"|https://xmzp.weiweiblog.cn/"+"".join(x['created_date'].split('-'))+"/"+x['title']+"/ |\n")
-    fo.write("![](https://cdn.weiweiblog.cn/20181015134257.png)")
+    fo.write("![](https://cdn.weiweiblog.cn/20181015134814.png)")
 
 print("一周招聘信息汇总编写完毕")

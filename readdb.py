@@ -19,7 +19,7 @@ for x in res:
         fo.write("发布时间："+ x['start_date']+'   \U0001F31F   招聘人数：'+x['people']+'   \U0001F308   截止时间：'+x['dead_time']+'\n')
         fo.write("<!-- more -->\n")
         fo.write(x['content'])
-        fo.write("![](https://cdn.weiweiblog.cn/20181015134257.png)")
+        fo.write("![](https://cdn.weiweiblog.cn/20181015134814.png)")
         time.sleep(1)
 print("添加"+str(num)+"篇文章")
 
