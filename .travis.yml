@@ -3,7 +3,7 @@ node_js: stable
 
 branches:
     only:
-        - hexo
+        - master
 
 install:
     - npm install
